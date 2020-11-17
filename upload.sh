@@ -1,0 +1,1 @@
+docker push gingerfan/wpg:latest
