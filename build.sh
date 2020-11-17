@@ -1,4 +1,4 @@
-# docker build -t gingerfan/wpg:latest .
+# docker build -t gingerfan/wpg:base .
 
 
 docker build -f Dockerfile \
