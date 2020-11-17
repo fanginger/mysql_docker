@@ -17,4 +17,7 @@ WORKDIR ~/Downloads
 RUN wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
 RUN bash Anaconda3-2020.02-Linux-x86_64.sh -b
 
+# Make RUN commands use the new environment:
+RUN echo "export PATH=~/anaconda3/bin:$PATH" >> ~/.bashrc
 
+RUN ~/anaconda3/bin/conda install flask
