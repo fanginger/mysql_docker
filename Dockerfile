@@ -26,6 +26,11 @@ WORKDIR /dockerfile
 #下載mysql
 RUN apt-get update && \
     apt-get install -y \ 
-    mysql-server 
+    mysql-server \
+    mysql-client
+
+
 
 ADD . /dockerfile
+
+CMD [ "service mysql start" ]
