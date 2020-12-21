@@ -1,13 +1,9 @@
 service mysql start
-
-
-
-
+service cron start
 
 set -e
 set -x
 
-# mysqld --initialize
 
 # Start the MySQL daemon in the background.
 /usr/sbin/mysqld &
@@ -17,7 +13,6 @@ until mysqladmin ping >/dev/null 2>&1; do
   echo -n "."; sleep 0.2
 done
 mysql --user=root --password='ginger123'  --execute="CREATE DATABASE testdb;"
-
 mysql --user=root --password='ginger123'  --execute="CREATE USER 'ginger'@'%' IDENTIFIED BY 'ginger123';"
 mysql --user=root --password='ginger123'  --execute="GRANT ALL ON testdb.* TO 'ginger'@'%';"
 
