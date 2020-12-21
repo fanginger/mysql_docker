@@ -2,8 +2,7 @@ service mysql start
 service cron start
 
 set -e
-set -x
-
+set -x # Print shell command before execute it.  This feature help programmers to track their shell script.
 
 # Start the MySQL daemon in the background.
 /usr/sbin/mysqld &
