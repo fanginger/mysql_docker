@@ -1,1 +1,1 @@
-* * * * * bash /dockerfile/backup.sh >> /var/log/cron.log
+* * * * * bash /mysql_docker/backup.sh >> /var/log/cron.log

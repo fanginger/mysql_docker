@@ -22,7 +22,7 @@ RUN python -m pip install flask\
                 PyMySQL\
                 marshmallow-sqlalchemy
                 
-WORKDIR /dockerfile
+WORKDIR /mysql_docker
 
 #下載mysql
 RUN apt-get update && \
@@ -30,7 +30,7 @@ RUN apt-get update && \
     mysql-server \
     mysql-client
 
-ADD . /dockerfile
+ADD . /mysql_docker
 
 COPY cron /etc/cron.d/cron
 RUN chmod 0644 /etc/cron.d/cron
