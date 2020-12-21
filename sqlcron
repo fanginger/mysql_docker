@@ -1,1 +1,0 @@
-* * * * * bash /dockerfile/cron.sh >> /var/log/cron.log

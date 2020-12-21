@@ -31,10 +31,10 @@ RUN apt-get update && \
     mysql-client
 
 ADD . /dockerfile
-COPY cron.sh /dockerfile/cron.sh
-COPY sqlcron /etc/cron.d/sqlcron
-RUN chmod 0644 /etc/cron.d/sqlcron
 
-RUN crontab /etc/cron.d/sqlcron
+COPY cron /etc/cron.d/cron
+RUN chmod 0644 /etc/cron.d/cron
 
-CMD bash test.sh 
+RUN crontab /etc/cron.d/cron
+
+CMD bash load_container.sh
