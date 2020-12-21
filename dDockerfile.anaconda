@@ -1,8 +1,0 @@
-# FROM gingerfan/wpg:base
-
-# # Make RUN commands use the new environment:
-# RUN echo "export PATH=~/anaconda3/bin:$PATH" >> ~/.bashrc
-
-# RUN ~/anaconda3/bin/conda install flask
-# #RUN /bin/bash -c "source ~/.bashrc && conda install flask"
-

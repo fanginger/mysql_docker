@@ -19,7 +19,8 @@ RUN python -m pip install flask\
                 Flask-SQLAlchemy \
                 Flask-RESTful \
                 flask-marshmallow\
-                PyMySQL
+                PyMySQL\
+                marshmallow-sqlalchemy
                 
 WORKDIR /dockerfile
 
@@ -29,8 +30,11 @@ RUN apt-get update && \
     mysql-server \
     mysql-client
 
-
-
 ADD . /dockerfile
+COPY cron.sh /dockerfile/cron.sh
+COPY sqlcron /etc/cron.d/sqlcron
+RUN chmod 0644 /etc/cron.d/sqlcron
 
-CMD [ "service mysql start" ]
+RUN crontab /etc/cron.d/sqlcron
+
+CMD bash test.sh 
