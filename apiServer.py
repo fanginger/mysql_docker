@@ -3,6 +3,7 @@
 # Author: Ginger Fan
 # Date:   Dec 4, 2020
 
+import sys
 from flask import Flask, request, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api, Resource, reqparse
@@ -19,7 +20,7 @@ def hello_world():
 # Connect to local mysql server
 # app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://debian-sys-maint:KM5fObUGBIC3zEQ9@localhost/testdb"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://ginger:ginger123@localhost/testdb"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://ginger:"+sys.argv[1]+"@localhost/testdb"
 # app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:ginger94090@localhost/testdb"
 db = SQLAlchemy(app)
 db.init_app(app)
