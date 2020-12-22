@@ -17,4 +17,4 @@ mysql --user=root --password='ginger123'  --execute="GRANT ALL ON testdb.* TO 'g
 
 python apiServer.py
 
-bash
+# bash
