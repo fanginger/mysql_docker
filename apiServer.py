@@ -20,7 +20,7 @@ def hello_world():
 # Connect to local mysql server
 # app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://debian-sys-maint:KM5fObUGBIC3zEQ9@localhost/testdb"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://ginger:"+sys.argv[1]+"@localhost/testdb"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://"+sys.argv[2]+":"+sys.argv[1]+"@localhost/testdb"
 # app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:ginger94090@localhost/testdb"
 db = SQLAlchemy(app)
 db.init_app(app)

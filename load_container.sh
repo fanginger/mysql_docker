@@ -12,9 +12,9 @@ until mysqladmin ping >/dev/null 2>&1; do
   echo -n "."; sleep 0.2
 done
 mysql --user=root  --execute="CREATE DATABASE testdb;"
-mysql --user=root  --execute="CREATE USER 'ginger'@'%' IDENTIFIED BY '$password';"
-mysql --user=root  --execute="GRANT ALL ON testdb.* TO 'ginger'@'%';"
+mysql --user=root  --execute="CREATE USER '$user'@'%' IDENTIFIED BY '$password';"
+mysql --user=root  --execute="GRANT ALL ON testdb.* TO '$user'@'%';"
 
-python apiServer.py $password
+python apiServer.py $password $user
 
 # bash
