@@ -196,8 +196,7 @@ class User_detail(Resource):
 class User_One(Resource):
     def post(self):
         try:
-            exists_user = db.session.query(User.uid).filter_by(
-                uid=request.json['uid']).scalar() is not None
+            
 
             if 'uid' not in request.json.keys():
                 return ResponseData.get(status=ResponseData.STATUS_FAIL, code=ResponseData.CODE_LACK_OF_ESSENTIAL_COLUMN)
@@ -225,6 +224,8 @@ class User_One(Resource):
                 created_time=datetime.datetime.now(),
                 updated_time=datetime.datetime.now()
             )
+            exists_user = db.session.query(User.uid).filter_by(
+                uid=request.json['uid']).scalar() is not None
             if exists_user:
                 return ResponseData.get(status=ResponseData.STATUS_FAIL, code=ResponseData.CODE_DATA_ALREADY_EXIST)
             else:

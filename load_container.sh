@@ -14,9 +14,9 @@ done
 mysql --user=root  --execute="CREATE DATABASE testdb;"
 mysql --user=root  --execute="CREATE USER 'ddt'@'%' IDENTIFIED BY '$password';"
 mysql --user=root  --execute="GRANT ALL ON testdb.* TO 'ddt'@'%';"
-mysql --user=root   <"intit.sql"
+mysql --user=root   <"init.sql"
 
-service mysql start &&tail -f /var/log/mysql/error.log
-# python apiServer.py $password 
+# service mysql start &&tail -f /var/log/mysql/error.log
+python apiServer.py $password 
 
 # bash
