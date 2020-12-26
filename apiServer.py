@@ -242,12 +242,17 @@ class User_One(Resource):
                 return ResponseData.get(status=ResponseData.STATUS_FAIL, code=ResponseData.CODE_LACK_OF_ESSENTIAL_COLUMN)
             if not request.json['uid'] or request.json['uid'] == " " or request.json['uid'].isspace() :
                 return ResponseData.get(status=ResponseData.STATUS_FAIL, code=ResponseData.CODE_LACK_OF_ESSENTIAL_COLUMN)
+            exists_user = db.session.query(User.uid).filter_by(
+                uid=request.json['uid']).scalar() is not None
+            if not exists_user:
+                return ResponseData.get(status=ResponseData.STATUS_FAIL, code=ResponseData.CODE_LACK_OF_ESSENTIAL_COLUMN)
             admin = User.query.filter_by(uid=request.json['uid']).first()
             for key in request.json.keys():
                 if key == 'uid':
                     pass
                 else:
                     setattr(admin, key, request.json[key])
+                    setattr(admin,'updated_time',datetime.datetime.now())
                     db.session.commit()
             return ResponseData.get(status=ResponseData.STATUS_SUCCESS)
         except:
@@ -292,6 +297,11 @@ class Company_One(Resource):
                 return ResponseData.get(status=ResponseData.STATUS_FAIL, code=ResponseData.CODE_LACK_OF_ESSENTIAL_COLUMN)
             if not request.json['company_name'] or request.json['company_name'] == " " or request.json['company_name'].isspace():
                 return ResponseData.get(status=ResponseData.STATUS_FAIL, code=ResponseData.CODE_LACK_OF_ESSENTIAL_COLUMN)
+            exists_company = db.session.query(Company.company_name).filter_by(
+                company_name=request.json['company_name']).scalar() is not None
+
+            if not exists_company:
+                return ResponseData.get(status=ResponseData.STATUS_FAIL, code=ResponseData.CODE_LACK_OF_ESSENTIAL_COLUMN)
             admin = Company.query.filter_by(
                 company_name=request.json['company_name']).first()
             for key in request.json.keys():
@@ -299,6 +309,7 @@ class Company_One(Resource):
                     pass
                 else:
                     setattr(admin, key, request.json[key])
+                    setattr(admin,'updated_time',datetime.datetime.now())
                     db.session.commit()
             return ResponseData.get(status=ResponseData.STATUS_SUCCESS)
         except:
