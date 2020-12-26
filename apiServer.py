@@ -196,8 +196,6 @@ class User_detail(Resource):
 class User_One(Resource):
     def post(self):
         try:
-            
-
             if 'uid' not in request.json.keys():
                 return ResponseData.get(status=ResponseData.STATUS_FAIL, code=ResponseData.CODE_LACK_OF_ESSENTIAL_COLUMN)
             if not request.json['uid'] or request.json['uid'] == " " or request.json['uid'].isspace()  :
