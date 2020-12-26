@@ -322,7 +322,7 @@ if __name__ == "__main__":
     post_company = CompanySchema()
     posts_company = CompanySchema(many=True)
 
-    db.create_all()
+    # db.create_all()
     api.add_resource(User_One, '/user')
     api.add_resource(User_detail, '/user/<uid>')
     api.add_resource(User_All, '/user/list')

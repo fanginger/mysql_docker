@@ -11,7 +11,7 @@ mysql_pid=$!
 until mysqladmin ping >/dev/null 2>&1; do
   echo -n "."; sleep 0.2
 done
-mysql --user=root  --execute="CREATE DATABASE testdb;"
+mysql --user=root  --execute="CREATE DATABASE testdb COLLATE utf8_unicode_ci;"
 mysql --user=root  --execute="CREATE USER 'ddt'@'%' IDENTIFIED BY '$password';"
 mysql --user=root  --execute="GRANT ALL ON testdb.* TO 'ddt'@'%';"
 mysql --user=root   <"init.sql"
